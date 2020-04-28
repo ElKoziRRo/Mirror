@@ -44,9 +44,12 @@ namespace Mirror.Tests
             //   prefab does not have NetworkIdentity
             // gives warning when...
             //   prefab has multiple prefab does not have NetworkIdentity
+            //   assetId is already being used by different prefab/handler
             ClientScene.RegisterPrefab(null);
 
             // Sets newAssetId
+            // gives warning when...
+            //   assetId is already being used by different prefab/handler
             ClientScene.RegisterPrefab(null, new Guid());
 
             // Adds Delegate to spawnHandlers dictionary
@@ -57,6 +60,8 @@ namespace Mirror.Tests
             //   spawnHandler is null
             //   unspawnHandler is null
             //   assetId is empty
+            // gives warning when...
+            //   assetId is already being used by different prefab/handler
             ClientScene.RegisterPrefab(null, new SpawnDelegate((x, y) => null), new UnSpawnDelegate((x) => { }));
             ClientScene.RegisterPrefab(null, new SpawnHandlerDelegate((x) => null), new UnSpawnDelegate((x) => { }));
         }
