@@ -1,36 +1,144 @@
+using System;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Mirror.Tests
 {
     public class ClientSceneTests
     {
+        [Test]
+        [Ignore("Not Implemented")]
+        public void PrepareToSpawnSceneObjects()
+        {
+            // Finds All inactive Network Identities In Scene With SceneIds
+            // ClearsExistingDictionary
+            ClientScene.PrepareToSpawnSceneObjects();
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void GetPrefab()
+        {
+            // Returns False For Empty Guid
+            // Returns False If Prefab Is Not Found
+            // Returns False If Prefab Is Null
+            // Returns True When Prefab Is Found
+            // Has Out Prefab With Correct Guid
+            bool result = ClientScene.GetPrefab(new System.Guid(), out GameObject prefab);
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void RegisterPrefab()
+        {
+            // overloads
+            // RegisterPrefab(GameObject prefab)
+            // RegisterPrefab(GameObject prefab, SpawnDelegate spawnHandler, UnSpawnDelegate unspawnHandler)
+            // RegisterPrefab(GameObject prefab, SpawnHandlerDelegate spawnHandler, UnSpawnDelegate unspawnHandler)
+            // RegisterPrefab(GameObject prefab, Guid newAssetId)
+
+
+            // Adds Prefab To Prefab Dictionary
+            // gives errors when...
+            //   prefab is null
+            //   prefab does not have NetworkIdentity
+            // gives warning when...
+            //   prefab has multiple prefab does not have NetworkIdentity
+            ClientScene.RegisterPrefab(null);
+
+            // Sets newAssetId
+            ClientScene.RegisterPrefab(null, new Guid());
+
+            // Adds Delegate to spawnHandlers dictionary
+            // Adds Delegate to unspawnHandlers dictionary
+            // gives errors when...
+            //   prefab is null
+            //   prefab does not have NetworkIdentity
+            //   spawnHandler is null
+            //   unspawnHandler is null
+            //   assetId is empty
+            ClientScene.RegisterPrefab(null, new SpawnDelegate((x, y) => null), new UnSpawnDelegate((x) => { }));
+            ClientScene.RegisterPrefab(null, new SpawnHandlerDelegate((x) => null), new UnSpawnDelegate((x) => { }));
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void UnregisterPrefab()
+        {
+            // Removes Prefab from Prefab Dictionary (if it exists)
+            // Removes handlers from spawnHandlers Dictionary (if it exists)
+            // Removes handlers from unSpawnHandlers Dictionary (if it exists)
+            // gives errors when...
+            //   prefab is null
+            //   prefab does not have NetworkIdentity
+            ClientScene.UnregisterPrefab(null);
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void RegisterSpawnHandler()
+        {
+            // overloads
+            // RegisterSpawnHandler(Guid assetId, SpawnDelegate spawnHandler, UnSpawnDelegate unspawnHandler)
+            // RegisterSpawnHandler(Guid assetId, SpawnHandlerDelegate spawnHandler, UnSpawnDelegate unspawnHandler)
+
+
+            // Adds Delegate to spawnHandlers dictionary
+            // Adds Delegate to unspawnHandlers dictionary
+            // gives errors when...
+            //   spawnHandler is null
+            //   unspawnHandler is null
+            //   assetId is empty
+            ClientScene.RegisterSpawnHandler(new Guid(), new SpawnDelegate((x, y) => null), new UnSpawnDelegate((x) => { }));
+            ClientScene.RegisterSpawnHandler(new Guid(), new SpawnHandlerDelegate((x) => null), new UnSpawnDelegate((x) => { }));
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void UnregisterSpawnHandler()
+        {
+            // Removes handlers from spawnHandlers Dictionary (if it exists)
+            // Removes handlers from unSpawnHandlers Dictionary (if it exists)
+            // gives errors when...
+            //   assetId is empty
+            ClientScene.UnregisterSpawnHandler(new Guid());
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void ClearSpawners()
+        {
+            // Removes all prefabs from prefabs Dictionary
+            // Removes all handlers from spawnHandlers Dictionary
+            // Removes all handlers from unspawnHandlers Dictionary
+            ClientScene.ClearSpawners();
+        }
+
+        [Test]
+        [Ignore("Not Implemented")]
+        public void DestroyAllClientObjects()
+        {
+            // Destroys all NetworkIdentity prefabs in scene
+            // Disables all NetworkIdentity scene objects in scene
+            // Calls unspawnHandler instead of Destroy/Disable (if one exists)
+            ClientScene.DestroyAllClientObjects();
+        }
 
 
 
-        // old tests below
+        [Test]
+        [Ignore("Not Implemented")]
+        public void OnSpawn()
+        {
+            // AppliesPayloadCorrectly
+
+            ClientScene.OnSpawn(new SpawnMessage());
 
 
-        [Test] public void AppliesPayloadCorrectly() { Assert.Ignore("Not Implemented"); }
-        [Test] public void SpawnsPrefabIfOneExists() { Assert.Ignore("Not Implemented"); }
-        [Test] public void SpawnsObjectFromSpawnHandler() { Assert.Ignore("Not Implemented"); }
-        [Test] public void AppliesPayloadToObjectInSpawnAsync() { Assert.Ignore("Not Implemented"); }
-        [Test] public void SpawnsSceneObject() { Assert.Ignore("Not Implemented"); }
-
-
-        [Test] public void RegisterPrefab() { Assert.Ignore("Not Implemented"); }
-        [Test] public void RegisterPrefabSetsAssetId() { Assert.Ignore("Not Implemented"); }
-        [Test] public void RegisterSpawnDelegate() { Assert.Ignore("Not Implemented"); }
-        [Test] public void RegisterSpawnHandlerDelegate() { Assert.Ignore("Not Implemented"); }
-        [Test] public void RegisterSpawnAsyncHandlerDelegate() { Assert.Ignore("Not Implemented"); }
-
-        [Test] public void RegisterSpawnHandlerGivesErrorIfWrongHandlerAlreadyExists() { Assert.Ignore("Not Implemented"); }
-        [Test] public void RegisterSpawnAsyncHandlerGivesErrorIfWrongHandlerAlreadyExists() { Assert.Ignore("Not Implemented"); }
-
-        [Test] public void UnregisterPrefabRemovesAllHandlers() { Assert.Ignore("Not Implemented"); }
-
-
-
-        [Test] public void GetPrefabReturnsTrueAndPrefab() { Assert.Ignore("Not Implemented"); }
-        [Test] public void GetPrefabReturnsFalseForNoPrefab() { Assert.Ignore("Not Implemented"); }
+            // old notes
+            //SpawnsPrefabIfOneExists
+            //SpawnsObjectFromSpawnHandler
+            //SpawnsSceneObject
+        }
     }
 }
