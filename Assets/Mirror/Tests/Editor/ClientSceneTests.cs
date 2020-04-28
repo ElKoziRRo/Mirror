@@ -135,15 +135,17 @@ namespace Mirror.Tests
         [Ignore("Not Implemented")]
         public void OnSpawn()
         {
-            // AppliesPayloadCorrectly
-
+            // Applies Payload Correctly
+            // Applies Payload to existing object (if one exists
+            // Spawns Prefab from prefab Dictionary
+            // Spawns Prefab from Handler
+            // Spawns Scene object from spawnableObjects Dictionary
+            // gives errors when...
+            //   guid and sceneId is empty
+            //   cant find prefab/handler with assetId
+            //   cant find object with sceneId
+            //   failed to spawn prefab
             ClientScene.OnSpawn(new SpawnMessage());
-
-
-            // old notes
-            //SpawnsPrefabIfOneExists
-            //SpawnsObjectFromSpawnHandler
-            //SpawnsSceneObject
         }
     }
 }
